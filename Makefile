@@ -25,6 +25,7 @@ samd21a/gcc \
 hpl/pm \
 hpl/sysctrl \
 hal/utils/src \
+hpl/sercom \
 examples \
 hpl/gclk \
 samd21a/gcc/gcc \
@@ -48,10 +49,12 @@ hpl/dmac  \
 hpl/gclk  \
 hpl/pm  \
 hpl/port  \
+hpl/sercom \
 hpl/sysctrl  \
 hpl/systick  \
 hri  \
-CMSIS/Include  \
+./ \
+CMSIS/Core/Include  \
 samd21a/include  \
 
 # Top-level directories make should look for things in

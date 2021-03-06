@@ -1,4 +1,6 @@
 #include <atmel_start.h>
+#include "serial_print.h"
+#include "serial_read.h"
 
 int main(void)
 {
@@ -8,21 +10,12 @@ int main(void)
 	/* Replace the code below with your application code */
 
 	/* Set pin PB30 to output */
-	REG_PORT_DIR1 |= (1<<30);
+	// REG_PORT_DIR1 |= (1<<30);
 
 	/* Make it blink! */
+	s_read_init();
+
 	while (1) {
-		REG_PORT_OUT1 &= ~(1<<30);
-		delay_ms(100);
-		REG_PORT_OUT1 |= (1<<30);
-		delay_ms(100);
-		REG_PORT_OUT1 &= ~(1<<30);
-		delay_ms(100);
-		REG_PORT_OUT1 |= (1<<30);
-		delay_ms(100);
-		REG_PORT_OUT1 &= ~(1<<30);
-		delay_ms(100);
-		REG_PORT_OUT1 |= (1<<30);
-		delay_ms(1000);
+		
 	}
 }
