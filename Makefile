@@ -18,8 +18,10 @@ ASF_DIR := asf-samd21
 # but make sure to add ./
 ATMEL_SRC_DIRS :=  \
 ./ \
+stdio_redirect/gcc \
 hpl/systick \
 hpl/dmac \
+stdio_redirect \
 hal/src \
 samd21a/gcc \
 hpl/pm \
@@ -53,6 +55,9 @@ hpl/sercom \
 hpl/sysctrl  \
 hpl/systick  \
 hri  \
+./ \
+config \
+stdio_redirect \
 ./ \
 CMSIS/Core/Include  \
 samd21a/include  \

@@ -30,8 +30,10 @@ endif
 # List the subdirectories for creating object files
 SUB_DIRS +=  \
  \
+stdio_redirect/gcc \
 hpl/systick \
 hpl/dmac \
+stdio_redirect \
 hal/src \
 samd21a/gcc \
 hpl/pm \
@@ -46,8 +48,10 @@ hpl/core
 # List the object files
 OBJS +=  \
 hal/src/hal_io.o \
+stdio_redirect/stdio_io.o \
 hpl/systick/hpl_systick.o \
 samd21a/gcc/gcc/startup_samd21.o \
+stdio_redirect/gcc/write.o \
 hal/utils/src/utils_syscalls.o \
 hal/src/hal_delay.o \
 hpl/pm/hpl_pm.o \
@@ -58,7 +62,9 @@ hal/utils/src/utils_assert.o \
 hpl/dmac/hpl_dmac.o \
 hpl/sysctrl/hpl_sysctrl.o \
 hal/src/hal_usart_sync.o \
+stdio_redirect/gcc/read.o \
 hpl/gclk/hpl_gclk.o \
+stdio_start.o \
 hal/src/hal_init.o \
 main.o \
 samd21a/gcc/system_samd21.o \
@@ -73,8 +79,10 @@ hal/src/hal_atomic.o
 
 OBJS_AS_ARGS +=  \
 "hal/src/hal_io.o" \
+"stdio_redirect/stdio_io.o" \
 "hpl/systick/hpl_systick.o" \
 "samd21a/gcc/gcc/startup_samd21.o" \
+"stdio_redirect/gcc/write.o" \
 "hal/utils/src/utils_syscalls.o" \
 "hal/src/hal_delay.o" \
 "hpl/pm/hpl_pm.o" \
@@ -85,7 +93,9 @@ OBJS_AS_ARGS +=  \
 "hpl/dmac/hpl_dmac.o" \
 "hpl/sysctrl/hpl_sysctrl.o" \
 "hal/src/hal_usart_sync.o" \
+"stdio_redirect/gcc/read.o" \
 "hpl/gclk/hpl_gclk.o" \
+"stdio_start.o" \
 "hal/src/hal_init.o" \
 "main.o" \
 "samd21a/gcc/system_samd21.o" \
@@ -115,6 +125,9 @@ DIR_INCLUDES +=  \
 -I"../hpl/systick" \
 -I"../hri" \
 -I"../" \
+-I"../config" \
+-I"../stdio_redirect" \
+-I"../" \
 -I"../CMSIS/Core/Include" \
 -I"../samd21a/include"
 
@@ -123,10 +136,12 @@ DEPS := $(OBJS:%.o=%.d)
 
 DEPS_AS_ARGS +=  \
 "samd21a/gcc/gcc/startup_samd21.d" \
+"stdio_redirect/stdio_io.d" \
 "hal/src/hal_gpio.d" \
 "hal/src/hal_io.d" \
 "hpl/systick/hpl_systick.d" \
 "hal/utils/src/utils_syscalls.d" \
+"stdio_redirect/gcc/write.d" \
 "hpl/core/hpl_core_m0plus_base.d" \
 "hal/utils/src/utils_list.d" \
 "hpl/dmac/hpl_dmac.d" \
@@ -134,9 +149,11 @@ DEPS_AS_ARGS +=  \
 "hal/src/hal_delay.d" \
 "hpl/core/hpl_init.d" \
 "hpl/sysctrl/hpl_sysctrl.d" \
+"stdio_start.d" \
 "hpl/gclk/hpl_gclk.d" \
 "hal/src/hal_init.d" \
 "hal/src/hal_usart_sync.d" \
+"stdio_redirect/gcc/read.d" \
 "driver_init.d" \
 "samd21a/gcc/system_samd21.d" \
 "main.d" \
